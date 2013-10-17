@@ -3,5 +3,13 @@ require "codebreaker/version"
 require 'codebreaker/game'
 
 module Codebreaker
-  # Your code goes here...
+  class Game
+    def initialize(output)
+      @output = output
+    end
+ 
+    def start
+      @output.puts 'Welcome to Codebreaker!'
+    end
+  end
 end
