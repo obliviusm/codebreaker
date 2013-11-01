@@ -11,9 +11,9 @@ module Codebreaker
     end
  
     def start
-    	generate
-      	@output.puts 'Welcome to Codebreaker!'
-      	@output.puts 'Enter guess:'
+    	#generate
+    	@output.puts 'Welcome to Codebreaker!'
+    	@output.puts 'Enter guess:'
     end
 
     def enter input
@@ -26,7 +26,8 @@ module Codebreaker
   end
 end
 
-my_game = Codebreaker::Game.new (IO.new STDOUT.fileno)
+
+my_game = Codebreaker::Game.new (STDOUT)
 my_game.start
 my_game.enter gets
 my_game.mark
