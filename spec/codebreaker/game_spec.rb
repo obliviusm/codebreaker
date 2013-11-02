@@ -35,9 +35,20 @@ module Codebreaker
       end
       it "recieves string with 4 numbers" do
           game.guess = "1234"
-          game.guess.should == "1234"
+          game.guess.should == [1,2,3,4]
       end
-    end    
+    end  
+    
+    describe "#mark" do
+        before :each do
+          game.start
+          game.code = [1,2,3,4]
+          game.guess = "4231"
+        end
+        it "returns 4 +/-" do
+            game.mark.should == "++++"
+        end
+    end
 =begin
     describe "#mark" do
     	it "answer with ++++ if inputted_code == generated_code" do 

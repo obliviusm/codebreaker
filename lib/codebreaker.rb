@@ -4,7 +4,7 @@ require_relative 'codebreaker/game'
 
 module Codebreaker
   class Game
-  	attr_accessor :code, :guess
+  	attr_accessor :code
 
     def initialize(output)
       @output = output
@@ -15,9 +15,25 @@ module Codebreaker
     	@output.puts 'Welcome to Codebreaker!'
     	@output.puts 'Enter guess:'
     end
+    
+    def guess= g
+        @guess = g.split("").map(&:to_i)
+    end
+    
+    def guess
+        @guess 
+    end
 
-    def mark 
-    	@output.puts @input
+    def mark
+        answer = ""
+    	guess.each do |x|
+    	    if code.include? x
+	            answer += "+"
+    	    else
+    	        answer += "-"
+    	    end
+    	end
+    	answer.split("").sort.join
     end
     
     def generate
