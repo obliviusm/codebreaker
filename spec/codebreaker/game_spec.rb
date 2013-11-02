@@ -44,6 +44,25 @@ module Codebreaker
             game.mark.should == "++++"
         end
     end
+    
+    describe "#process" do
+        before :each do
+          game.start
+          game.code = [1,2,3,4]
+        end
+        
+        it "wins the game" do
+            game.stub(:gets) { "4321\n" }
+            output.should_receive(:puts).with("You win!")
+            game.process
+        end
+        
+        it "loses the game" do
+            game.stub(:gets) { "5678\n" }
+            output.should_receive(:puts).with("No more tries has left. You lost!")
+            game.process 
+        end
+    end
 =begin
     describe "#mark" do
     	it "answer with ++++ if inputted_code == generated_code" do 

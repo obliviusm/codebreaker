@@ -30,7 +30,7 @@ module Codebreaker
     	    elsif i < 10
     	        @output.puts "Not right. Try again!"
     	    else
-    	        @output.puts "No more tries has left. You lose!"
+    	        @output.puts "No more tries has left. You lost!"
     	        break
     	    end
     	end 
