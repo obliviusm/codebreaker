@@ -12,9 +12,12 @@ module Codebreaker
     end
  
     def start
-    	generate
-    	@output.puts 'Welcome to Codebreaker!'
-    	process
+        begin
+        	generate
+        	@output.puts 'Welcome to Codebreaker!'
+        	process
+        	@output.puts "Do you want to paly one more time? y/n"
+    	end while(gets.chomp == "y")
     end
     
     def process
@@ -25,9 +28,9 @@ module Codebreaker
     	    self.guess = gets.chomp
     	    @output.puts "Answer: " + mark
     	    if mark == "++++"
-    	        @output.puts "You win!"
+    	        @output.puts "You won!"
     	        break
-    	    elsif i < 10
+    	    elsif i < @n
     	        @output.puts "Not right. Try again!"
     	    else
     	        @output.puts "No more tries has left. You lost!"
@@ -64,7 +67,7 @@ module Codebreaker
 end
 
 
-my_game = Codebreaker::Game.new (STDOUT)
+my_game = Codebreaker::Game.new(STDOUT,3)
 my_game.start
 #my_game.process
 #my_game.guess = gets

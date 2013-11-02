@@ -53,7 +53,7 @@ module Codebreaker
         
         it "wins the game" do
             game.stub(:gets) { "4321\n" }
-            output.should_receive(:puts).with("You win!")
+            output.should_receive(:puts).with("You won!")
             game.process
         end
         
