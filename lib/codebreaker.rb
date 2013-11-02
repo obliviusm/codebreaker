@@ -23,11 +23,16 @@ module Codebreaker
     def mark 
     	@output.puts @input
     end
+    
+    def generate
+        @code = (1..6).to_a.sample(4)
+    end
   end
 end
 
 
 my_game = Codebreaker::Game.new (STDOUT)
-my_game.start
-my_game.enter gets
-my_game.mark
+p my_game.generate
+#my_game.start
+#my_game.enter gets
+#my_game.mark

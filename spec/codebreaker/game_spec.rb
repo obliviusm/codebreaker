@@ -21,16 +21,20 @@ module Codebreaker
 
     describe "#generate_code" do
     	let(:code) { game.generate_code }
-    	it "generates code" do
-    		game
+    	it "returns array of 4 things" do
+    		game.generate.count.should == 4
+    	end
+    	it "returns array of 4 numbers" do
+    		game.generate.all?{|x| x.is_a? Fixnum}.should be_true
     	end
     end
-
+=begin
     describe "#mark" do
     	it "answer with ++++ if inputted_code == generated_code" do 
     		generated_code = "1111"
     		game.mark("1111").should == "++++" 
     	end
     end
+=end
   end
 end
