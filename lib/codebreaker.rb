@@ -6,14 +6,33 @@ module Codebreaker
   class Game
   	attr_accessor :code
 
-    def initialize(output)
+    def initialize(output, number_of_tries = 10)
       @output = output
+      @n = number_of_tries
     end
  
     def start
     	generate
     	@output.puts 'Welcome to Codebreaker!'
-    	@output.puts 'Enter guess:'
+    end
+    
+    def process
+        i = 0
+    	@n.times do
+    	    i += 1
+    	    @output.puts 'Enter guess:'
+    	    guess = gets
+    	    @output.puts "Answer: " + mark
+    	    if mark == "++++"
+    	        @output.puts "You win!"
+    	        break
+    	    elsif i < 10
+    	        @output.puts "Not right. Try again!"
+    	    else
+    	        @output.puts "No more tries has left. You lose!"
+    	        break
+    	    end
+    	end 
     end
     
     def guess= g
@@ -44,7 +63,6 @@ end
 
 
 my_game = Codebreaker::Game.new (STDOUT)
-p my_game.generate
 #my_game.start
 #my_game.guess = gets
 #my_game.mark
