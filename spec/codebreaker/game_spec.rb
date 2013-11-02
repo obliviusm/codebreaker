@@ -19,15 +19,25 @@ module Codebreaker
       end
     end
 
-    describe "#generate_code" do
-    	let(:code) { game.generate_code }
+    describe "#generate" do
+    	let(:code) { game.generate }
     	it "returns array of 4 things" do
-    		game.generate.count.should == 4
+    		code.count.should == 4
     	end
     	it "returns array of 4 numbers" do
-    		game.generate.all?{|x| x.is_a? Fixnum}.should be_true
+    		code.all?{|x| x.is_a? Fixnum}.should be_true
     	end
     end
+    
+    describe "#guess" do
+      before :each do
+          game.start
+      end
+      it "recieves string with 4 numbers" do
+          game.guess = "1234"
+          game.guess.should == "1234"
+      end
+    end    
 =begin
     describe "#mark" do
     	it "answer with ++++ if inputted_code == generated_code" do 
