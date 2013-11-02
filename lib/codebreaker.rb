@@ -14,6 +14,7 @@ module Codebreaker
     def start
     	generate
     	@output.puts 'Welcome to Codebreaker!'
+    	process
     end
     
     def process
@@ -21,7 +22,7 @@ module Codebreaker
     	@n.times do
     	    i += 1
     	    @output.puts 'Enter guess:'
-    	    guess = gets
+    	    self.guess = gets.chomp
     	    @output.puts "Answer: " + mark
     	    if mark == "++++"
     	        @output.puts "You win!"
@@ -37,6 +38,7 @@ module Codebreaker
     
     def guess= g
         @guess = g.split("").map(&:to_i)
+        @guess
     end
     
     def guess
@@ -63,6 +65,7 @@ end
 
 
 my_game = Codebreaker::Game.new (STDOUT)
-#my_game.start
+my_game.start
+#my_game.process
 #my_game.guess = gets
 #my_game.mark
