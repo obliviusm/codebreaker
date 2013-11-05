@@ -12,12 +12,18 @@ module Codebreaker
     end
  
     def start
-        begin
-        	generate
+        play do
+            generate
         	@output.puts 'Welcome to Codebreaker!'
         	process
-        	@output.puts "Do you want to paly one more time? y/n"
-    	end while(gets.chomp == "y")
+        end
+    end
+    
+    def play
+        begin
+            yield
+            @output.puts "Do you want to paly one more time? y/n"  
+        end while(gets.chomp == "y")
     end
     
     def process
